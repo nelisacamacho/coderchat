@@ -1,0 +1,13 @@
+{{!-- El contenido que va a remplazar en main --}}
+{{!-- Lado del cliente --}}
+<div>
+    <h1>CoderChat</h1>
+    <input type="text" name="inputData" id="inputData">
+    <p id="outputData"></p>
+</div>
+
+{{!-- Se importan las librerias del sweetalert antes que el socket para que pida el nombre del usuario antes de iniciar el socket --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{!-- Se importan primero las librerias de socket.io y despues index.js --}}
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>
