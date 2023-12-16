@@ -11,24 +11,44 @@ const socket = io();
 // Se autentifica el usuario
 let userName;
 
-Swal.fire({
-    title: 'Ingrese su nombre',
-    input: 'text',
-    inputValidator:(value) => {
-        if(!value) {
-            return 'Tienes que ingresar tu nombre';
-        }
-    }, 
-    toast: true, // Toast Permite que el usuario siga interactuando con la pagina
-}).then(data => {
-    userName = data.value;
-    // console.log(userName);
-    // Se envía notification de que un usuario nuevo se conectó
-    socket.emit('newUser', userName);
-});
+// Swal.fire({
+//     title: 'Ingrese su nombre',
+//     input: 'text',
+//     inputValidator:(value) => {
+//         if(!value) {
+//             return 'Tienes que ingresar tu nombre';
+//         }
+//     }, 
+//     toast: true, // Toast Permite que el usuario siga interactuando con la pagina
+// }).then(data => {
+//     userName = data.value;
+//     // console.log(userName);
+//     // Se envía notification de que un usuario nuevo se conectó
+//     socket.emit('newUser', userName);
+// });
 
 const inputData = document.getElementById('inputData');
 const outputData = document.getElementById('outputData');
+
+inputData.addEventListener('mousedown', (event) => {
+    if(!userName) {
+        Swal.fire({
+            title: 'Ingrese su nombre',
+            input: 'text',
+            inputValidator:(value) => {
+                if(!value) {
+                    return 'Tienes que ingresar tu nombre';
+                }
+            }, 
+            toast: true, // Toast Permite que el usuario siga interactuando con la pagina
+        }).then(data => {
+            userName = data.value;
+            // Se envía notification de que un usuario nuevo se conectó
+            socket.emit('newUser', userName);
+        });
+
+    }
+})
 
 inputData.addEventListener('keypress', (event) => {
     // console.log('ingreso');
