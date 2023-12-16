@@ -18,7 +18,8 @@ Swal.fire({
         if(!value) {
             return 'Tienes que ingresar tu nombre';
         }
-    }
+    }, 
+    toast: true, // Toast Permite que el usuario siga interactuando con la pagina
 }).then(data => {
     userName = data.value;
     // console.log(userName);
@@ -62,4 +63,4 @@ socket.on('notification', user => {
         toast: true, // Toast Permite que el usuario siga interactuando con la pagina
         position: 'top-right'
     })
-})
+});
